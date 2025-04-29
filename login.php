@@ -2,7 +2,7 @@
     <head>
         <title> Login </title>
     </head>
-        <table>
+        <table >
             <tr>
                 <td><h1>LOGIN</h1></td>
                 <td><h1>SIGNUP</h1></td>
@@ -11,10 +11,10 @@
                 <td>
                     <form method="post" action="signin.php">
                         <label for="username">username</label>
-                        <input type="text" id="username">
+                        <input type="text" name="username">
                         <br>
                         <label for="password">password</label>
-                        <input type="text" id="password">
+                        <input type="text" name="password">
                         <br>
                         <input type="submit" value="Login">
                     </form>
@@ -22,10 +22,10 @@
                 <td>
                     <form method="post" action="signup.php">
                         <label for="username">username</label>
-                        <input type="text" id="username">
+                        <input type="text" name="username">
                         <br>
                         <label for="password">password</label>
-                        <input type="text" id="password">
+                        <input type="text" name="password">
                         <br>
                         <input type="submit" value="Signup">
                     </form>

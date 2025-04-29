@@ -1,11 +1,9 @@
 <html>
     <head>
-        <title>gestione film</title>
+        <title>Gestione film</title>
     </head>
     <body>
-        <h1> Gestione film </h1>
-        <table id="film">
-        </table>
+        <h1> Gestione Film </h1>
         <br>
         <table>
             <tr>
@@ -15,12 +13,65 @@
             </tr>
             <tr>
                 <td>
-                    <form>
-                        <input type="text" id="nome_film">
+                    <form method="post" action="">
+                        <label for="titolo_film">Titolo</label>
+                        <input type="text" name="titolo_film">
+                        <br>
+                        <label for="scrittore_film">Scrittore</label>
+                        <input type="text" name="scrittore_film">
+                        <br>
+                        <label for="regista_film">Regista</label>
+                        <input type="text" name="regista_film">
+                        <br>
+                        <label>Attore/personaggio</label>
+                        <input type="text" name="attore_film_1">
+                        <input type="text" name="personaggio_film_1">
+                        <br>
+                        <label>Attore/personaggio</label>
+                        <input type="text" name="attore_film_2">
+                        <input type="text" name="personaggio_film_2">
+                        <br>
+                        <label>Attore/personaggio</label>
+                        <input type="text" name="attore_film_3">
+                        <input type="text" name="personaggio_film_3">
+                        <br>
+                        <input type="submit" value="Aggiungi">
                     </form>
                 </td>
-                <td></td>
-                <td></td>
+                <td>
+                    <form method="post" action="">
+                        <label for="titolo_film">Titolo</label>
+                        <select name="titolo_film" ></select>
+                        <br>
+                        <label for="scrittore_film">Scrittore</label>
+                        <input type="text" name="scrittore_film">
+                        <br>
+                        <label for="regista_film">Regista</label>
+                        <input type="text" name="regista_film">
+                        <br>
+                        <label>Attore/personaggio</label>
+                        <input type="text" name="attore_film_1">
+                        <input type="text" name="personaggio_film_1">
+                        <br>
+                        <label>Attore/personaggio</label>
+                        <input type="text" name="attore_film_2">
+                        <input type="text" name="personaggio_film_2">
+                        <br>
+                        <label>Attore/personaggio</label>
+                        <input type="text" name="attore_film_3">
+                        <input type="text" name="personaggio_film_3">
+                        <br>
+                        <input type="submit" value="Modifica">
+                    </form>
+                </td>
+                <td>
+                    <form method="post" action="">
+                        <label for="titolo_film">Titolo</label>
+                        <select name="titolo_film" ></select>
+                        <br>
+                        <input type="submit" value="Elimina">
+                    </form>
+                </td>
             </tr>
         </table>
     </body>
