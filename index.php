@@ -8,5 +8,4 @@ while($row = $res->fetch_assoc()){
     print_r($row);echo ("<br>");
 }
 
-<br>
-<a href="./frontend/login.php">Login</a>
+?>
