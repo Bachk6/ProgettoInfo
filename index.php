@@ -9,3 +9,5 @@ while($row = $res->fetch_assoc()){
 }
 
 ?>
+
+<a href="./frontend/login.php">Login</a>
