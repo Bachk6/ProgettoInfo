@@ -2,7 +2,7 @@
     <head>
         <title> Login </title>
     </head>
-        <table>
+        <table >
             <tr>
                 <td><h1>LOGIN</h1></td>
                 <td><h1>SIGNUP</h1></td>
