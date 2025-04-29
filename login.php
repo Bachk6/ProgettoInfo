@@ -9,7 +9,7 @@
             </tr>
             <tr>
                 <td>
-                    <form method="post" action="">
+                    <form method="post" action="signin.php">
                         <label for="username">username</label>
                         <input type="text" id="username">
                         <br>
@@ -20,7 +20,7 @@
                     </form>
                 </td>
                 <td>
-                    <form method="post" action="">
+                    <form method="post" action="signup.php">
                         <label for="username">username</label>
                         <input type="text" id="username">
                         <br>
