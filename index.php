@@ -1,5 +1,6 @@
 <?php
 
-echo "OPPA!"
-
 ?>
+
+<br>
+<a href="./frontend/login.php">Login</a>
