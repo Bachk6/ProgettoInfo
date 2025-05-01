@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <title>Pagina Admin</title>
+    </head>
+    <body>
+        <?php
+            session_start();
+            echo "<h1>Sei dentro '".$_SESSION["username"]."'!</h1>";
+        ?>
+        <br>
+        <form action="gst_film.php">
+            <button type="submit">Gestione film</button>
+        </form>
+        <form action="gst_sedi.html">
+            <button type="submit">Gestione sedi</button>
+        </form>
+        <form action="gst_sale.html">
+            <button type="submit">Gestione sale</button>
+        </form>
+        <form action="gst_proiezioni.html">
+            <button type="submit">Gestione proiezioni</button>
+        </form>
+        </body>
+</html>

@@ -1,4 +1,4 @@
 <?php 
 session_start();
-echo "Sei dentro!";
+    echo "<h1>Sei dentro '".$_SESSION["username"]."'!</h1>";
 ?>

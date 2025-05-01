@@ -16,7 +16,6 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
             $conn->query("INSERT INTO utenti (utenti.username, utenti.passwordHash, utenti.permessi) VALUES ('$name', '$hash','client')");
             echo("Account creato. <a href='login.php'>Torna al login</a>");
         }
-    
     }
     else echo("Username o password non supportati. <a href='login.php'>Torna al login</a>");}
 

@@ -9,15 +9,18 @@ if ($_SERVER["REQUEST_METHOD"]=="POST"){
         if ($res->num_rows == 1){
             $row = $res->fetch_assoc();
             if ($psw==$row["passwordHash"]){
-                $_SESSION["username"]=$row["utenteId"];
-                echo "<script>window.location.href = 'user.php';</script>";
+                $_SESSION["username"]=$row["username"];
+                if($row["permessi"] == "admin")
+                    echo "<script>window.location.href = 'admin.php';</script>";
+                else if($row["permessi"] == "client")
+                    echo "<script>window.location.href = 'user.php';</script>";
             }
-            else echo("Password errata! <a href='login.php'>Torna al login</a>");
+            else echo("Password errata! <br><a href='login.php'>Torna al login</a>");
         }
-        else echo ("Errore! L'utente non è stato trovato.<a href='login.php'>Torna al login</a>");
+        else echo ("Errore! L'utente non è stato trovato.<br><a href='login.php'>Torna al login</a>");
     
     }
-    else echo("Username o password non supportati. <a href='login.php'>Torna al login</a>");}
+    else echo("Username o password non supportati. <br><a href='login.php'>Torna al login</a>");}
 
 else echo "Error 400 Not Allowed";
 $conn->close();
