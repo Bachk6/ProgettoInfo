@@ -1,7 +1,7 @@
 <?php
     session_start();
     //Funzione aggiunta
-    if($_POST["btn"] == "Aggiungi"){
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"] == "Aggiungi"){
         include("SQLconnect.php");
         if ($_SERVER["REQUEST_METHOD"]=="POST"){
             if(isset($_POST["titolo_film"]) && isset($_POST["scrittore_film"]) && isset($_POST["regista_film"])
@@ -77,7 +77,7 @@
     }
 
     //Funzione modifica
-    if($_POST["btn"]=="Modifica"){
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Modifica"){
         include("SQLconnection.php");
 
         $conn->close();
