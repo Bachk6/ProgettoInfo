@@ -1,10 +1,10 @@
+<?php session_start();?>
 <html>
     <head>
         <title>Pagina Admin</title>
     </head>
     <body>
         <?php
-            session_start();
             echo "<h1>Sei dentro '".$_SESSION["username"]."'!</h1>";
         ?>
         <br>
