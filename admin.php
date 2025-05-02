@@ -1,4 +1,4 @@
-<?php session_start();?>
+<?php session_start();include("SQLconnect.php");checkUser(array('admin'));?>
 <html>
     <head>
         <title>Pagina Admin</title>
