@@ -107,11 +107,12 @@
         //Cancellazione attori
         $sql = "DELETE FROM attori WHERE filmId = '$id'";
         $conn->query($sql);
-
+        //cancellazione proiezioni
+        $conn->query("DELETE FROM proiezioni WHERE filmID='$id'");
         //Cancellazione film
         $sql = "DELETE FROM film WHERE filmId = '$id'";
         $conn->query($sql);
-
+        
         echo "<h3>Cancellazione effettuata</h3>";
     }
 ?>

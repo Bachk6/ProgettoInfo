@@ -56,4 +56,4 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"])){
         </table>
     </body>
 </html>
-<?php $conn->close()?>
+<?php $conn->close();?>
