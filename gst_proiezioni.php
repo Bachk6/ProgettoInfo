@@ -1,7 +1,20 @@
 <?php
-session_start();
-include("SQLconnect.php");
-checkUser(array('admin'));
+    session_start();
+    include("SQLconnect.php");
+    checkUser(array('admin'));
+
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"])){
+        if($_POST["btn"] == "Aggiungi" && isset($_POST["data"]) && $_POST["data"] != null){
+            $sala_id = $_POST["sale"];
+            $ora = $_POST["ora_init"];
+            $data = $_POST["data"];
+            $film_id = $_POST["film"];
+            $conn->query("INSERT INTO proiezioni(salaId, oraInizio, giorno, filmId) VALUE ($sala_id, $ora, '$data', $film_id)");
+
+            echo "<h3>Proiezione aggiunta!</h3>";
+        }
+
+    }
 ?>
 <html>
     <head>
@@ -94,7 +107,7 @@ checkUser(array('admin'));
                         <label for="data">Data</label>
                         <input type="date" name="data">
                         <br>
-                        <input type="submit" value="Aggiungi">
+                        <input name = "btn" type="submit" value="Aggiungi">
                     </form>
                 </td>
                 <td>
@@ -142,7 +155,7 @@ checkUser(array('admin'));
                         <label for="data">Data</label>
                         <input type="date" name="data" id="giorno">
                         <br>
-                        <input type="submit" value="Modifica">
+                        <input name="btn" type="submit" value="Modifica">
                     </form>
                 </td>
                 <td>
@@ -166,7 +179,7 @@ checkUser(array('admin'));
                         <label for="proiezioni" >Proiezione</label>
                         <select name="proiezioni" id="pro3"></select>
                         <br>
-                        <input type="submit" value="Elimina">
+                        <input name="btn" type="submit" value="Elimina">
                     </form>
                 </td>
             </tr>
