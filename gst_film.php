@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("SQLconnect.php");
+    checkUser(array('admin'));
     //Funzione aggiunta
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"] == "Aggiungi"){
         if(isset($_POST["titolo_film"]) && isset($_POST["scrittore_film"]) && isset($_POST["regista_film"])
