@@ -37,10 +37,6 @@
             
         }
         //aggiunta attori e personaggi
-        if(isset($_POST["attore_film_1"]) && isset($_POST["attore_film_2"]) && isset($_POST["attore_film_3"])
-        && isset($_POST["personaggio_film_1"]) && isset($_POST["personaggio_film_2"]) && isset($_POST["personaggio_film_3"])
-        && $_POST["attore_film_1"] != "" && $_POST["attore_film_2"] != "" && $_POST["attore_film_3"] != ""
-        && $_POST["personaggio_film_1"] != "" && $_POST["personaggio_film_2"] != "" && $_POST["personaggio_film_3"] != ""){
             //ottenimento film id
             $titl = $_POST["titolo_film"];
             $res = $conn->query("SELECT filmId FROM film WHERE titolo='$titl'");
@@ -71,22 +67,21 @@
             else
                 echo "<h3>Errore: Attori con quel nome già registrato</h3>";
         }
-    }
 
     //Funzione modifica
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Modifica"){
         $id = $_POST["titolo_film"];
         if(isset($_POST["scrittore_film"]) && $_POST["scrittore_film"] != ""){
             $temp = $_POST["scrittore_film"];
-            $conn->query("UPDATE film SET scrittore= $_temp WHERE filmId=$id");
+            $conn->query("UPDATE film SET scrittore= '$_temp' WHERE filmId=$id");
         }
         else if(isset($_POST["regista_film"]) && $_POST["regista_film"] != ""){
             $temp = $_POST["regista_film"];
-            $conn->query("UPDATE film SET regista= $_temp WHERE filmId=$id");
+            $conn->query("UPDATE film SET regista= '$_temp' WHERE filmId=$id");
         }
         else if(isset($_POST["durata"]) && $_POST["durata"] != ""){
             $temp = $_POST["durata"];
-            $conn->query("UPDATE film SET scrittore= $_temp WHERE filmId=$id");
+            $conn->query("UPDATE film SET durata= '$_temp' WHERE filmId=$id");
         }
     }
 
@@ -148,7 +143,6 @@
                         <input type="text" name="regista_film">
                         <br>
                         <label for="durata">Durata(min)</label>
-                        <input type="number" name="durata">
                         <input type="number" name="durata">
                         <br>
                         <label>Attore/personaggio</label>
