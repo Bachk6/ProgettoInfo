@@ -11,7 +11,15 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"])){
         else echo "<h3>Errore: Sede esiste già</h3>";
     }
     else if ($_POST["btn"]=="Elimina"){
+        $id = $_POST["nome_sede"];
+        //Cancella proiezioni della sede
+        $conn->query("DELETE FROM proiezioni WHERE salaId IN (SELECT salaId FROM sale WHERE sediId='$id')");
+        //Cancella sale della sede
+        $conn->query("DELETE FROM sale WHERE sediId='$id'");
+        //Cancella sede
+        $conn->query("DELETE FROM sedi WHERE sediId='$id'");
 
+        echo "<h3>Sede eliminata con successo</h3>";
     }
 }
 ?>
@@ -20,7 +28,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"])){
         <title>Gestione sedi</title>
     </head>
     <body>
-        <h1>Gestone Sedi</h1>
+        <h1>Gestione Sedi</h1>
         <table>
             <tr>
                 <td><h3>Aggiunta Sede</h3></td>
