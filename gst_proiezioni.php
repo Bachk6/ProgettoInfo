@@ -23,6 +23,10 @@
 
             echo "<h3>Proiezione aggiornata</h3>"; 
         }
+        if ($_POST["btn"]=="Elimina" && isset($_POST["proiezioni"])){
+            $pId = $_POST["proiezioni"];
+            $conn->query("DELETE FROM proiezioni WHERE proiezioneId = $pId");
+        }
     }
 ?>
 <html>
