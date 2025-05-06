@@ -17,7 +17,7 @@
         <form action="gst_sale.php">
             <button type="submit">Gestione sale</button>
         </form>
-        <form action="gst_proiezioni.html">
+        <form action="gst_proiezioni.php">
             <button type="submit">Gestione proiezioni</button>
         </form>
         </body>
