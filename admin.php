@@ -11,7 +11,7 @@
         <form action="gst_film.php">
             <button type="submit">Gestione film</button>
         </form>
-        <form action="gst_sedi.html">
+        <form action="gst_sedi.php">
             <button type="submit">Gestione sedi</button>
         </form>
         <form action="gst_sale.html">
