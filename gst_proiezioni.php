@@ -10,10 +10,19 @@
             $data = $_POST["data"];
             $film_id = $_POST["film"];
             $conn->query("INSERT INTO proiezioni(salaId, oraInizio, giorno, filmId) VALUE ($sala_id, $ora, '$data', $film_id)");
-
+        
             echo "<h3>Proiezione aggiunta!</h3>";
         }
+        if($_POST["btn"]  == "Modifica"){
+            $proiez_id = $_POST["proiezioni"];
+            
+            $film_id = $_POST["film"];
+            $ora = $_POST["ora_init"];
+            $data = $_POST["data"];
+            $conn->query("UPDATE proiezioni SET filmId = $film_id, oraInizio = $ora, giorno = '$data' WHERE proiezioneId = $proiez_id");
 
+            echo "<h3>Proiezione aggiornata</h3>"; 
+        }
     }
 ?>
 <html>
