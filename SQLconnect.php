@@ -9,7 +9,19 @@ $conn = new mysqli($servername, $username, $password, $dbname);
 if ($conn->connect_error) {
     die("Connessione fallita: " . $conn->connect_error);
 }
+function creaConn(){
+global $conn;
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "cinema";
 
+$conn = new mysqli($servername, $username, $password, $dbname);
+
+if ($conn->connect_error) {
+    die("Connessione fallita: " . $conn->connect_error);
+}
+}
 function checkUser($permessi){
     global $conn;
     if (! isset($_SESSION["username"])){
