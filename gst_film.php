@@ -84,6 +84,11 @@
 <html>
     <head>
         <title>Gestione film</title>
+        <script>
+            async function CaricaFilm(){
+                //let res = await fetch("getFilmDetails.php?film="+doc)
+            }
+        </script>
     </head>
     <body>
         <h1> Gestione Film </h1>
@@ -129,32 +134,32 @@
                         <label for="titolo_film">Titolo</label>
                         <select name="titolo_film" >
                             <?php
-                                $res = $conn->query("SELECT titolo FROM film");
+                                $res = $conn->query("SELECT filmId , titolo FROM film");
                                 if ($res->num_rows > 0) {
                                     while($row = $res->fetch_assoc()){
-                                        echo "<option value='".$row["titolo"]."'>".$row["titolo"]."</option>";
+                                        echo "<option value='".$row["filmId"]."'>".$row["titolo"]."</option>";
                                     }
                                 }
                             ?>
                         </select>
                         <br>
                         <label for="scrittore_film">Scrittore</label>
-                        <input type="text" name="scrittore_film">
+                        <input id="scrittore" type="text" name="scrittore_film">
                         <br>
                         <label for="regista_film">Regista</label>
-                        <input type="text" name="regista_film">
+                        <input id="regista" type="text" name="regista_film">
                         <br>
                         <label>Attore/personaggio</label>
-                        <input type="text" name="attore_film_1">
-                        <input type="text" name="personaggio_film_1">
+                        <input id="a1" type="text" name="attore_film_1">
+                        <input id="p1"type="text" name="personaggio_film_1">
                         <br>
                         <label>Attore/personaggio</label>
-                        <input type="text" name="attore_film_2">
-                        <input type="text" name="personaggio_film_2">
+                        <input id="a2" type="text" name="attore_film_2">
+                        <input id="p2"type="text" name="personaggio_film_2">
                         <br>
                         <label>Attore/personaggio</label>
-                        <input type="text" name="attore_film_3">
-                        <input type="text" name="personaggio_film_3">
+                        <input id="a3" type="text" name="attore_film_3">
+                        <input id="p3" type="text" name="personaggio_film_3">
                         <br>
                         <input type="submit" name="btn" value="Modifica">
                     </form>
@@ -164,10 +169,10 @@
                         <label for="titolo_film">Titolo</label>
                         <select name="titolo_film" >
                             <?php
-                                $res = $conn->query("SELECT titolo FROM film");
+                                $res = $conn->query("SELECT filmId, titolo FROM film");
                                 if ($res->num_rows > 0) {
                                     while($row = $res->fetch_assoc()){
-                                        echo "<option value='".$row["titolo"]."'>".$row["titolo"]."</option>";
+                                        echo "<option value='".$row["filmId"]."'>".$row["titolo"]."</option>";
                                     }
                                 }
                             ?>
