@@ -1,8 +1,8 @@
 <?php
     session_start();
+    include("SQLconnect.php");
     //Funzione aggiunta
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"] == "Aggiungi"){
-        include("SQLconnect.php");
         if ($_SERVER["REQUEST_METHOD"]=="POST"){
             if(isset($_POST["titolo_film"]) && isset($_POST["scrittore_film"]) && isset($_POST["regista_film"])
             && isset($_POST["durata"]) && $_POST["titolo_film"] != "" && $_POST["scrittore_film"] != "" 
@@ -70,18 +70,15 @@
                     $conn->query($sql);
                 }
                 else
-                    echo "<h3>Errore: Attori con quel titolo già registrato</h3>";
+                    echo "<h3>Errore: Attori con quel nome già registrato</h3>";
             }
         }
-        $conn->close();
     }
 
     //Funzione modifica
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Modifica"){
-        include("SQLconnection.php");
 
-        $conn->close();
-    }
+    } 
 ?>
 
 <html>
@@ -99,7 +96,7 @@
             </tr>
             <tr>
                 <td>
-                    <form method="post" action="">
+                    <form method="post" action="gst_film.php">
                         <label for="titolo_film">Titolo</label>
                         <input type="text" name="titolo_film">
                         <br>
@@ -132,14 +129,12 @@
                         <label for="titolo_film">Titolo</label>
                         <select name="titolo_film" >
                             <?php
-                                include("SQLconnect.php");
                                 $res = $conn->query("SELECT titolo FROM film");
                                 if ($res->num_rows > 0) {
                                     while($row = $res->fetch_assoc()){
                                         echo "<option value='".$row["titolo"]."'>".$row["titolo"]."</option>";
                                     }
                                 }
-                                $conn->close();
                             ?>
                         </select>
                         <br>
@@ -169,14 +164,12 @@
                         <label for="titolo_film">Titolo</label>
                         <select name="titolo_film" >
                             <?php
-                                include("SQLconnect.php");
                                 $res = $conn->query("SELECT titolo FROM film");
                                 if ($res->num_rows > 0) {
                                     while($row = $res->fetch_assoc()){
                                         echo "<option value='".$row["titolo"]."'>".$row["titolo"]."</option>";
                                     }
                                 }
-                                $conn->close();
                             ?>
                         </select>
                         <br>
@@ -187,3 +180,4 @@
         </table>
     </body>
 </html>
+<?php $conn->close();?>
