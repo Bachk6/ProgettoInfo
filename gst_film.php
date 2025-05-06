@@ -75,24 +75,34 @@
 
     //Funzione modifica
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Modifica"){
-
+        $id = $_POST["titolo_film"];
+        if(isset($_POST["scrittore_film"]) && $_POST["scrittore_film"] != ""){
+            $temp = $_POST["scrittore_film"];
+            $conn->query("UPDATE film SET scrittore= $_temp WHERE filmId=$id");
+        }
+        else if(isset($_POST["regista_film"]) && $_POST["regista_film"] != ""){
+            $temp = $_POST["regista_film"];
+            $conn->query("UPDATE film SET regista= $_temp WHERE filmId=$id");
+        }
+        else if(isset($_POST["durata"]) && $_POST["durata"] != ""){
+            $temp = $_POST["durata"];
+            $conn->query("UPDATE film SET scrittore= $_temp WHERE filmId=$id");
+        }
     }
 
     //Funzione elimina
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Elimina"){
-        if(isset($_POST["titolo_film"]) && $_POST["titolo_film"] != ""){
-            $id = $_POST["titolo_film"];
+        $id = $_POST["titolo_film"];
 
-            //Cancellazione attori
-            $sql = "DELETE FROM attori WHERE filmId = '$id'";
-            $conn->query($sql);
+        //Cancellazione attori
+        $sql = "DELETE FROM attori WHERE filmId = '$id'";
+        $conn->query($sql);
 
-            //Cancellazione film
-            $sql = "DELETE FROM film WHERE filmId = '$id'";
-            $conn->query($sql);
+        //Cancellazione film
+        $sql = "DELETE FROM film WHERE filmId = '$id'";
+        $conn->query($sql);
 
-            echo "<h3>Cancellazione effettuata</h3>";
-        }
+        echo "<h3>Cancellazione effettuata</h3>";
     }
 ?>
 
@@ -127,7 +137,7 @@
                         <input type="text" name="regista_film">
                         <br>
                         <label for="durata">Durata(min)</label>
-                        <input type="text" name="durata">
+                        <input type="number" name="durata">
                         <br>
                         <label>Attore/personaggio</label>
                         <input type="text" name="attore_film_1">
@@ -163,6 +173,9 @@
                         <br>
                         <label for="regista_film">Regista</label>
                         <input id="regista" type="text" name="regista_film">
+                        <br>
+                        <label for="durata">Durata(min)</label>
+                        <input type="number" name="durata">
                         <br>
                         <label>Attore/personaggio</label>
                         <input id="a1" type="text" name="attore_film_1">
