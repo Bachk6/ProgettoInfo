@@ -3,82 +3,97 @@
     include("SQLconnect.php");
     //Funzione aggiunta
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"] == "Aggiungi"){
-        if ($_SERVER["REQUEST_METHOD"]=="POST"){
-            if(isset($_POST["titolo_film"]) && isset($_POST["scrittore_film"]) && isset($_POST["regista_film"])
-            && isset($_POST["durata"]) && $_POST["titolo_film"] != "" && $_POST["scrittore_film"] != "" 
-            && $_POST["regista_film"] != "" && $_POST["durata"] != ""){
-                //controllo titolo
-                $res = $conn->query("SELECT titolo FROM film");
-                $flag = false;
-                if($res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        if($row["titolo"] == $_POST["titolo_film"]){
-                            $flag = true;
-                            break;
-                        }
+        if(isset($_POST["titolo_film"]) && isset($_POST["scrittore_film"]) && isset($_POST["regista_film"])
+        && isset($_POST["durata"]) && $_POST["titolo_film"] != "" && $_POST["scrittore_film"] != "" 
+        && $_POST["regista_film"] != "" && $_POST["durata"] != ""){
+            //controllo titolo
+            $res = $conn->query("SELECT titolo FROM film");
+            $flag = false;
+            if($res->num_rows > 0){
+                while($row = $res->fetch_assoc()){
+                    if($row["titolo"] == $_POST["titolo_film"]){
+                        $flag = true;
+                        break;
                     }
                 }
-                if(!$flag){
-                    //aggiungi film
-                    $titl = $_POST["titolo_film"];
-                    $wrtr = $_POST["scrittore_film"];
-                    $rgst = $_POST["regista_film"];
-                    $drt = intval($_POST["durata"]);
-                    $sql = "INSERT INTO film(titolo, scrittore, regista, durata) VALUES
-                        ('$titl','$wrtr','$rgst','$drt')";
-                    if ($conn->query($sql) == TRUE) {
-                        echo "<h3>Film inserito con successo!</h3>";
-                    } else {
-                        echo "<h3>Errore: " . $sql . "<br>" . $conn->error . "</h3>";
-                    }
-                }
-                else{
-                    echo "<h3>Errore: Film con quel titolo già registrato</h3>";
-                }
-                
             }
-            //aggiunta attori e personaggi
-            if(isset($_POST["attore_film_1"]) && isset($_POST["attore_film_2"]) && isset($_POST["attore_film_3"])
-            && isset($_POST["personaggio_film_1"]) && isset($_POST["personaggio_film_2"]) && isset($_POST["personaggio_film_3"])
-            && $_POST["attore_film_1"] != "" && $_POST["attore_film_2"] != "" && $_POST["attore_film_3"] != ""
-            && $_POST["personaggio_film_1"] != "" && $_POST["personaggio_film_2"] != "" && $_POST["personaggio_film_3"] != ""){
-                //ottenimento film id
+            if(!$flag){
+                //aggiungi film
                 $titl = $_POST["titolo_film"];
-                $res = $conn->query("SELECT filmId FROM film WHERE titolo='$titl'");
-                $tmp = $res->fetch_assoc();
-                $id = $tmp["filmId"];
-                //controllo film id
-                $res = $conn->query("SELECT filmId FROM attori");
-                $flag = false;
-                if($res->num_rows > 0){
-                    while($row = $res->fetch_assoc()){
-                        if($row["filmId"] == $id){
-                            $flag = true;
-                            break;
-                        }
+                $wrtr = $_POST["scrittore_film"];
+                $rgst = $_POST["regista_film"];
+                $drt = intval($_POST["durata"]);
+                $sql = "INSERT INTO film(titolo, scrittore, regista, durata) VALUES
+                    ('$titl','$wrtr','$rgst','$drt')";
+                if ($conn->query($sql) == TRUE) {
+                    echo "<h3>Film inserito con successo!</h3>";
+                } else {
+                    echo "<h3>Errore: " . $sql . "<br>" . $conn->error . "</h3>";
+                }
+            }
+            else{
+                echo "<h3>Errore: Film con quel titolo già registrato</h3>";
+            }
+            
+        }
+        //aggiunta attori e personaggi
+        if(isset($_POST["attore_film_1"]) && isset($_POST["attore_film_2"]) && isset($_POST["attore_film_3"])
+        && isset($_POST["personaggio_film_1"]) && isset($_POST["personaggio_film_2"]) && isset($_POST["personaggio_film_3"])
+        && $_POST["attore_film_1"] != "" && $_POST["attore_film_2"] != "" && $_POST["attore_film_3"] != ""
+        && $_POST["personaggio_film_1"] != "" && $_POST["personaggio_film_2"] != "" && $_POST["personaggio_film_3"] != ""){
+            //ottenimento film id
+            $titl = $_POST["titolo_film"];
+            $res = $conn->query("SELECT filmId FROM film WHERE titolo='$titl'");
+            $tmp = $res->fetch_assoc();
+            $id = $tmp["filmId"];
+            //controllo film id
+            $res = $conn->query("SELECT filmId FROM attori");
+            $flag = false;
+            if($res->num_rows > 0){
+                while($row = $res->fetch_assoc()){
+                    if($row["filmId"] == $id){
+                        $flag = true;
+                        break;
                     }
                 }
-                //registrazione
-                if(!$flag){
-                    $act_1 = $_POST["attore_film_1"];
-                    $act_2 = $_POST["attore_film_2"];
-                    $act_3 = $_POST["attore_film_3"];
-                    $pg_1 = $_POST["personaggio_film_1"];
-                    $pg_2 = $_POST["personaggio_film_2"];
-                    $pg_3 = $_POST["personaggio_film_3"];
-                    $sql = "INSERT INTO attori(filmId, attore, personaggio) VALUES ('$id', '$act_1', '$pg_1'), ('$id', '$act_2', '$pg_2'), ('$id', '$act_3', '$pg_3')";
-                    $conn->query($sql);
-                }
-                else
-                    echo "<h3>Errore: Attori con quel nome già registrato</h3>";
             }
+            //registrazione
+            if(!$flag){
+                $act_1 = $_POST["attore_film_1"];
+                $act_2 = $_POST["attore_film_2"];
+                $act_3 = $_POST["attore_film_3"];
+                $pg_1 = $_POST["personaggio_film_1"];
+                $pg_2 = $_POST["personaggio_film_2"];
+                $pg_3 = $_POST["personaggio_film_3"];
+                $sql = "INSERT INTO attori(filmId, attore, personaggio) VALUES ('$id', '$act_1', '$pg_1'), ('$id', '$act_2', '$pg_2'), ('$id', '$act_3', '$pg_3')";
+                $conn->query($sql);
+            }
+            else
+                echo "<h3>Errore: Attori con quel nome già registrato</h3>";
         }
     }
 
     //Funzione modifica
     if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Modifica"){
 
-    } 
+    }
+
+    //Funzione elimina
+    if($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"]) && $_POST["btn"]=="Elimina"){
+        if(isset($_POST["titolo_film"]) && $_POST["titolo_film"] != ""){
+            $id = $_POST["titolo_film"];
+
+            //Cancellazione attori
+            $sql = "DELETE FROM attori WHERE filmId = '$id'";
+            $conn->query($sql);
+
+            //Cancellazione film
+            $sql = "DELETE FROM film WHERE filmId = '$id'";
+            $conn->query($sql);
+
+            echo "<h3>Cancellazione effettuata</h3>";
+        }
+    }
 ?>
 
 <html>
@@ -182,7 +197,7 @@
                 <td>
                     <form method="post" action="">
                         <label for="titolo_film">Titolo</label>
-                        <select name="titolo_film" >
+                        <select name="titolo_film">
                             <?php
                                 $res = $conn->query("SELECT filmId, titolo FROM film");
                                 if ($res->num_rows > 0) {
