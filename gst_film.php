@@ -111,7 +111,18 @@
         <title>Gestione film</title>
         <script>
             async function CaricaFilm(){
-                //let res = await fetch("getFilmDetails.php?film="+doc)
+                let res = await fetch("getFilmDetails.php?film="+document.getElementById("titolone").value);
+                let json = await res.json();
+                document.getElementById("regista").value=json["regista"];
+                document.getElementById("durata").value=json["durata"];
+                document.getElementById("scrittore").value=json["scrittore"];
+                document.getElementById("a1").value=json["a1"];
+                document.getElementById("a2").value=json["a2"];
+                document.getElementById("a3").value=json["a3"];
+                document.getElementById("p1").value=json["p1"];
+                document.getElementById("p2").value=json["p2"];
+                document.getElementById("p3").value=json["p3"];
+                console.log(json);
             }
         </script>
     </head>
@@ -138,6 +149,7 @@
                         <br>
                         <label for="durata">Durata(min)</label>
                         <input type="number" name="durata">
+                        <input type="number" name="durata">
                         <br>
                         <label>Attore/personaggio</label>
                         <input type="text" name="attore_film_1">
@@ -157,7 +169,7 @@
                 <td>
                     <form method="post" action="">
                         <label for="titolo_film">Titolo</label>
-                        <select name="titolo_film" >
+                        <select name="titolo_film" id="titolone" onchange="CaricaFilm();">
                             <?php
                                 $res = $conn->query("SELECT filmId , titolo FROM film");
                                 if ($res->num_rows > 0) {
@@ -175,7 +187,7 @@
                         <input id="regista" type="text" name="regista_film">
                         <br>
                         <label for="durata">Durata(min)</label>
-                        <input type="number" name="durata">
+                        <input type="number" name="durata" id="durata">
                         <br>
                         <label>Attore/personaggio</label>
                         <input id="a1" type="text" name="attore_film_1">
@@ -190,6 +202,7 @@
                         <input id="p3" type="text" name="personaggio_film_3">
                         <br>
                         <input type="submit" name="btn" value="Modifica">
+                        <script>CaricaFilm()</script>
                     </form>
                 </td>
                 <td>
