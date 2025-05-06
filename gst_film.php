@@ -73,16 +73,30 @@
         $id = $_POST["titolo_film"];
         if(isset($_POST["scrittore_film"]) && $_POST["scrittore_film"] != ""){
             $temp = $_POST["scrittore_film"];
-            $conn->query("UPDATE film SET scrittore= '$_temp' WHERE filmId=$id");
+            $conn->query("UPDATE film SET scrittore='$temp' WHERE filmId='$id'");
         }
-        else if(isset($_POST["regista_film"]) && $_POST["regista_film"] != ""){
+        if(isset($_POST["regista_film"]) && $_POST["regista_film"] != ""){
             $temp = $_POST["regista_film"];
-            $conn->query("UPDATE film SET regista= '$_temp' WHERE filmId=$id");
+            $conn->query("UPDATE film SET regista='$temp' WHERE filmId='$id'");
         }
-        else if(isset($_POST["durata"]) && $_POST["durata"] != ""){
+        if(isset($_POST["durata"]) && $_POST["durata"] != ""){
             $temp = $_POST["durata"];
-            $conn->query("UPDATE film SET durata= '$_temp' WHERE filmId=$id");
+            $conn->query("UPDATE film SET durata='$temp' WHERE filmId='$id'");
         }
+        //Cancellazione attori
+        $conn->query("DELETE FROM attori WHERE filmId = '$id'");
+
+        //Ri-aggiunta attori
+        $act_1 = $_POST["attore_film_1"];
+        $act_2 = $_POST["attore_film_2"];
+        $act_3 = $_POST["attore_film_3"];
+        $pg_1 = $_POST["personaggio_film_1"];
+        $pg_2 = $_POST["personaggio_film_2"];
+        $pg_3 = $_POST["personaggio_film_3"];
+
+        $conn->query("INSERT INTO attori(filmId, attore, personaggio) VALUES ('$id', '$act_1', '$pg_1'), ('$id', '$act_2', '$pg_2'), ('$id', '$act_3', '$pg_3')");
+
+            echo "<h3>Modifiche applicate</h3>";
     }
 
     //Funzione elimina
