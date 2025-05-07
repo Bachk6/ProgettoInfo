@@ -199,7 +199,7 @@
             <tr>
                 <td>
                     <form action="admin.php">
-                        <input type="submit" value="Torna nella dashboard">
+                        <input type="submit" value="Torna alla dashboard">
                     </form>
                 </td>
             </tr>
