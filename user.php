@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["prenota"])){
     <body>
         <h1>Utente - <?php echo $_SESSION["username"]?></h1>
         <a href="cerca.php">Esplora</a>
+        <a href="gst_prenotazioni.php?proiezioneId=1">Prenotazione</a>
         <h3>Le mie Prenotazioni</h3>
         <form action="" method="POST">
             <select name = "prenota">
