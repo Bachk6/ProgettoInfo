@@ -20,5 +20,8 @@
         <form action="gst_proiezioni.php">
             <button type="submit">Gestione proiezioni</button>
         </form>
+        <form action="login.php">
+            <button type="submit">Torna al login</button>
+        </form>
         </body>
 </html>

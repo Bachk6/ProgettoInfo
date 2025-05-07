@@ -196,6 +196,13 @@
                     </form>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <form action="admin.php">
+                        <input type="submit" value="Torna nella dashboard">
+                    </form>
+                </td>
+            </tr>
         </table>
     </body>
 </html>
