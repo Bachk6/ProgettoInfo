@@ -5,8 +5,8 @@
     <body>
         <h1>CINEMA MULTISALA: FILM A PIU' NON POSSO</h1>
         <h3>Benvenuto!</h3>
-        <form action="login.php">
-            <button type="submit">Pagina di login</button>
-        </form>
+        <a href="login.php">
+            <button>Pagina di login</button>
+        </a>
     </body>
 </html>

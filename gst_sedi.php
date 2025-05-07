@@ -63,9 +63,9 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["btn"])){
             </tr>
             <tr>
                 <td>
-                    <form action="admin.php">
-                        <input type="submit" value="Torna alla dashboard">
-                    </form>
+                    <a href="admin.php">
+                        <button>Torna alla dashboard</button>
+                    </a>
                 </td>
             </tr>
         </table>

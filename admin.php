@@ -8,20 +8,20 @@
             echo "<h1>Sei dentro '".$_SESSION["username"]."'!</h1>";
         ?>
         <br>
-        <form action="gst_film.php">
-            <button type="submit">Gestione film</button>
-        </form>
-        <form action="gst_sedi.php">
-            <button type="submit">Gestione sedi</button>
-        </form>
-        <form action="gst_sale.php">
-            <button type="submit">Gestione sale</button>
-        </form>
-        <form action="gst_proiezioni.php">
-            <button type="submit">Gestione proiezioni</button>
-        </form>
-        <form action="login.php">
-            <button type="submit">Torna al login</button>
-        </form>
+        <a href="gst_film.php">
+            <button>Gestione film</button>
+        </a>
+        <a href="gst_sedi.php">
+            <button>Gestione sedi</button>
+        </a>
+        <a href="gst_sale.php">
+            <button>Gestione sale</button>
+        </a>
+        <a href="gst_proiezioni.php">
+            <button>Gestione proiezioni</button>
+        </a>
+        <a href="login.php">
+            <button>Torna al login</button>
+        </a>
         </body>
 </html>

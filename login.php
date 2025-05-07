@@ -33,9 +33,9 @@
             </tr>
             <tr>
                 <td>
-                    <form action="index.php">
-                        <input type="submit" value="Torna al menu">
-                    </form>
+                    <a href="index.php">
+                        <button>Torna al menu</button>
+                    </a>
                 </td>
             </tr>
         </table>

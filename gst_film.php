@@ -235,9 +235,9 @@
             </tr>
             <tr>
                 <td>
-                    <form action="admin.php">
-                        <input type="submit" value="Torna alla dashboard">
-                    </form>
+                    <a href="admin.php">
+                        <button>Torna alla dashboard</button>
+                    </a>
                 </td>
             </tr>
         </table>
