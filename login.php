@@ -31,6 +31,13 @@
                     </form>
                 </td>
             </tr>
+            <tr>
+                <td>
+                    <form action="index.php">
+                        <input type="submit" value="Torna al menu">
+                    </form>
+                </td>
+            </tr>
         </table>
     </body>
 </html>
