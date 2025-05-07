@@ -2,6 +2,10 @@
 session_start();
 include("SQLconnect.php");
 CheckUser(array('admin','client'));
+if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["prenota"])){
+    $p = $_POST["prenota"];
+    $conn->query("DELETE from prenotazioni WHERE prenotazioneId=$p");
+}
 ?>
 <html>
     <head>
@@ -11,7 +15,7 @@ CheckUser(array('admin','client'));
         <h1>Utente - <?php echo $_SESSION["username"]?></h1>
         <a href="cerca.php">Esplora</a>
         <h3>Le mie Prenotazioni</h3>
-        <form action="">
+        <form action="" method="POST">
             <select name = "prenota">
                 <?php
                 $u = $_SESSION["username"];
@@ -37,3 +41,4 @@ CheckUser(array('admin','client'));
         </a>
     </body>
 </html>
+<?php $conn->close();?>
