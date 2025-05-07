@@ -5,7 +5,7 @@
         <table >
             <tr>
                 <td><h1>LOGIN</h1></td>
-                <td><h1>SIGNUP</h1></td>
+                <td><h1>REGISTRAZIONE</h1></td>
             </tr>
             <tr>
                 <td>
@@ -28,6 +28,13 @@
                         <input type="password" name="password">
                         <br>
                         <input type="submit" value="Signup">
+                    </form>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <form action="index.php">
+                        <input type="submit" value="Torna al menu">
                     </form>
                 </td>
             </tr>

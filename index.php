@@ -1,13 +1,12 @@
-<?php
-
-include("SQLconnect.php");
-
-$res = $conn->query("SELECT * from sedi");
-
-while($row = $res->fetch_assoc()){
-    print_r($row);echo ("<br>");
-}
-
-?>
-
-<a href="login.php">Login</a>
+<html>
+    <head>
+        <title>"Film a piu' non posso" </title>
+    </head>
+    <body>
+        <h1>CINEMA MULTISALA: FILM A PIU' NON POSSO</h1>
+        <h3>Benvenuto!</h3>
+        <form action="login.php">
+            <button type="submit">Pagina di login</button>
+        </form>
+    </body>
+</html>
