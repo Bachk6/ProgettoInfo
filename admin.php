@@ -23,5 +23,9 @@
         <form action="login.php">
             <button type="submit">Torna al login</button>
         </form>
+        
+        <a href="user.php">
+            <button>Vai alla tua pagina client</button>
+        </a>
         </body>
 </html>

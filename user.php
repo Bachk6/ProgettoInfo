@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"]=="POST" && isset($_POST["prenota"])){
             <input type="submit" value="Elimina">
         </form>
         <a href="login.php">
-            Torna al Login
+            <button>Torna al Login</button>
         </a>
     </body>
 </html>
