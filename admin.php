@@ -23,5 +23,8 @@
         <a href="login.php">
             <button>Torna al login</button>
         </a>
+        <a href="user.php">
+            <button>Vai alla tua pagina client</button>
+        </a>
         </body>
 </html>
