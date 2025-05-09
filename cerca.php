@@ -102,7 +102,24 @@ CheckUser(array('admin','client'));
                     }
                 }
                 else if ($_POST["sede"]!="-1" && $_POST["film"]!="-1"){
-                    echo "caso3";
+                    $x=$_POST["film"];
+                    $f=$_POST["sede"];
+                    $start= $_POST["datainizio"];
+                    $fin = $_POST["datafine"];
+                    echo "<h2>Proiezioni trovate: </h2>";
+                    $res=$conn->query("SELECT proiezioneId, giorno, orainizio, numeroSala FROM
+                    film NATURAL JOIN proiezioni NATURAL JOIN sale NATURAL join sedi
+                    WHERE filmId=$x AND giorno >= '$start' AND giorno <= '$fin'  AND sediId=$f ORDER BY giorno ASC;
+                    ");
+                    while($row=$res->fetch_assoc()){
+                        $sala=$row["numeroSala"];
+                        $g = $row["giorno"];
+                        $init= $row["orainizio"];
+                        $id = $row["proiezioneId"];
+                        echo "<h4>SALA N $sala, Il $g, ore $init</h4>";
+                        echo "<a href='gst_prenotazioni.php?proiezioneId=$id'><button>Prenota Ora</button></a>";
+
+                    }
                 }
                 else echo "<h3>FAI ALMENO UNA SCELTA</h3>";
             }
