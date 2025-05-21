@@ -12,10 +12,10 @@ CheckUser(array('admin','client'));
         <h1>Cerca Film</h1>
         <form action="" method="POST">
             <label for="datainizio">Data inizio</label>
-            <input type="date" name="datainizio">
+            <input type="date" name="datainizio" id="di">
             <br>
             <label for="datafine">Data fine</label>
-            <input type="date" name="datafine">
+            <input type="date" name="datafine" id="df">
             <br>
             <label for="film">Film</label>
             <select name="film">
@@ -124,6 +124,11 @@ CheckUser(array('admin','client'));
                 else echo "<h3>FAI ALMENO UNA SCELTA</h3>";
             }
         ?>
+        <script>
+        const today = new Date().toISOString().split('T')[0];
+        document.getElementById('di').value = today;
+        document.getElementById('df').value = today;
+        </script>
     </body>
 </html>
 <?php $conn->close();?>
