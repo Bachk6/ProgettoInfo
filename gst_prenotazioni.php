@@ -4,20 +4,21 @@
     CheckUser(array('admin','client'));
     $proiez_id = $_GET["proiezioneId"];
     $username = $_SESSION["username"];
+    $utente = $conn->query("SELECT utenteId FROM utenti WHERE username = '$username'");
+    while($row = $utente->fetch_assoc()){
+        $utente_id = $row["utenteId"];
+    }
     $data_proiez = $conn->query("SELECT giorno FROM proiezioni WHERE proiezioneId=$proiez_id");
     if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["btn"])){
         $posto = $_POST["posto"];
         $arr_posto = explode("-", $posto);
         $postoX = $arr_posto[1];
         $postoY = $arr_posto[0];
-        $utente = $conn->query("SELECT utenteId FROM utenti WHERE username = '$username'");
-        while($row = $utente->fetch_assoc()){
-            $utente_id = $row["utenteId"];
-        }
-        /*f($conn->query("INSERT INTO prenotazioni(proiezioneId, utenteId, postoX, postoY) VALUE ($proiez_id, $utente_id, $postoX, $postoY)"))
+        
+        if($conn->query("INSERT INTO prenotazioni(proiezioneId, utenteId, postoX, postoY) VALUE ($proiez_id, $utente_id, $postoX, $postoY)"))
             echo "<h3>Prenotazione aggiunta!</h3>";
         else
-            echo "Error prenotazione";*/
+            echo "Error prenotazione";
     }
 
     
@@ -41,18 +42,21 @@
         while($row = $title->fetch_assoc()){
             echo "GIORNO:".$row["giorno"]."<br>"."SEDE:".$row["nomeSede"]."<br>"."SALA:".$row["numeroSala"]."<br>"."TITOLO:".$row["titolo"]."<br>";
         }
-        $posti_disabled = $conn->query("SELECT postoX, postoY FROM prenotazioni WHERE proiezioneId = $proiez_id AND utenteId = $utente_id");
+        $posti_disabled = $conn->query("SELECT postoX, postoY FROM prenotazioni WHERE proiezioneId = $proiez_id");
         $row = 7;
         $col = 7;
-        $table = "<table id='table' name='table'>";
         $arr=array();
+        while($r = $posti_disabled->fetch_assoc()){
+            $arr[] = $r;
+        }
+        $table = "<table id='table' name='table'>";
         while($data = $posti_disabled->fetch_assoc()) $arr[]=$data;
         for($i=0; $i<$col; $i++){
             $table.= "<tr>";
             for($j=0; $j<$row; $j++){
                 $table.="<td><input type='radio' name='posto' value='$i-$j'";
-                for($rw = 0; $rw<arr){
-                    if($rw["postoX"] == $i && $rw["postoY"] == $j)
+                for($rw = 0; $rw<count($arr); $rw++){
+                    if($arr[$rw]["postoY"] == $i && $arr[$rw]["postoX"] == $j)
                         $table.="disabled";
                 }
                 $table.="></td>";
