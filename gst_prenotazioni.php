@@ -33,6 +33,20 @@
 <html>
     <head>
         <title>Prenotazioni</title>
+        <style>
+            .red{
+                background-color:#ef251b;
+            }
+            .green{
+                background-color:#278f2c;
+            }
+            td{
+                padding:5px;
+            }
+            input{
+                margin:0px;
+            }
+        </style>
     </head>
     <body>
 <?php 
@@ -54,11 +68,18 @@
         for($i=0; $i<$col; $i++){
             $table.= "<tr>";
             for($j=0; $j<$row; $j++){
-                $table.="<td><input type='radio' name='posto' value='$i-$j'";
+                $flag=false;
                 for($rw = 0; $rw<count($arr); $rw++){
                     if($arr[$rw]["postoY"] == $i && $arr[$rw]["postoX"] == $j)
-                        $table.="disabled";
+                        $flag=true;
                 }
+                $table.="<td ";
+                if ($flag)
+                    $table.="class='red'";
+                else $table.="class='green'";
+                $table.="><input type='radio' name='posto' value='$i-$j'";
+                if ($flag)
+                    $table.=" disabled";
                 $table.="></td>";
             }
             $table.="</tr>";
