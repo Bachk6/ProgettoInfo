@@ -96,8 +96,8 @@
     {
         "<h3>Data del film non compatibile.</h3>";
     }
-?>
-
+?>  <br><br>
+    <a href="user.php"><button>Torna alla dashboard</button></a>
     </body>
 </html>
 
